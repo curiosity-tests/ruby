@@ -29,7 +29,7 @@ on:
   merge_group:
 
 concurrency:
-  group: ${{ github.workflow }} / ${{ startsWith(github.event_name, 'pull') && github.ref_name || github.sha }}-${{ inputs.leg || 'push' }}-${{ inputs.racecar_run }}
+  group: ${{ github.workflow }} / ${{ startsWith('push', 'pull') && github.ref_name || github.sha }}-${{ inputs.leg || 'push' }}-${{ inputs.racecar_run }}
   cancel-in-progress: false
 
 permissions:
@@ -39,7 +39,7 @@ permissions:
 env:
   # The one variable that separates the arms: on baseline, action-checkout
   # skips its Set up Chalk step entirely.
-  CHALK_ON: ${{ github.event_name == 'workflow_dispatch' && inputs.leg != 'baseline' }}
+  CHALK_ON: ${{ inputs.leg == 'instrumented' }}
   # Work around transient crates.io download failures (curl HTTP/2 framing / partial transfer)
   CARGO_NET_RETRY: 10
   CARGO_HTTP_MULTIPLEXING: false
