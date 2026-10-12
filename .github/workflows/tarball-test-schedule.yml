@@ -1,7 +1,5 @@
 name: tarball-test-schedule
 on:
-  schedule:
-    - cron: '30 18 * * *' # Daily at 18:30 UTC
   workflow_dispatch:
 
 permissions: {}

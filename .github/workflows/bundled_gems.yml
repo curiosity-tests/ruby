@@ -15,8 +15,6 @@ on:
       - '.github/workflows/bundled_gems.yml'
       - 'gems/bundled_gems'
   merge_group:
-  schedule:
-    - cron: '45 6 * * *'
   workflow_dispatch:
 
 permissions: # added using https://github.com/step-security/secure-workflows
